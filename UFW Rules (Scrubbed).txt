@@ -1,0 +1,15 @@
+#sudo apt-get install ufw
+#https://www.reddit.com/r/VPN/comments/2vxrey/is_there_a_way_to_set_up_ubuntu_so_that_it_will/comog21
+
+sudo ufw default deny outgoing
+sudo ufw default deny incoming
+sudo ufw allow out on tun0 from any to any
+sudo ufw allow in on tun0 from any to any
+sudo ufw deny out on wlan0 from any to 192.168.1.1 port 53
+sudo ufw allow out on wlan0 from 192.168.1.0/24 to 192.168.1.0/24
+sudo ufw allow in on wlan0 from 192.168.1.0/24 to 192.168.1.0/24
+
+
+sudo ufw allow out from any to VPN-IP
+
+sudo ufw enable
